@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Promise all</h1>
+    <div id="boektekst"></div>
+    <p>blabla</p>
+    <script>
+        'use strict';
+        const promiseArray = [
+            fetch('./part1.txt').then ( (response) => response.text()), //promise
+            fetch('./part2.txt').then ( (response) => response.text()), //promise
+        ];
+
+        Promise.all(promiseArray).then((array) =>{
+            const div = document.getElementById('boektekst');
+            div.insertAdjacentHTML('beforeend', `<p>${array[0]}<p>`)
+            console.log(array[1]);
+            div.insertAdjacentHTML('beforeend', `<p>${array[1]}<p>`)
+        }); // één promise
+    </script>
+</body>
+</html>
